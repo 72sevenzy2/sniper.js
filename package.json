@@ -9,8 +9,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node dependencies/index.ts",
-    "start": "node dist/sniper.js"
+    "dev": "ts-node dependencies/sniper.ts",
+    "start": "node dist/sniper.js",
+    "watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
