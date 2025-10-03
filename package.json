@@ -1,4 +1,33 @@
 {
+  "name": "sniper-framework",
+  "version": "1.0.0",
+  "description": "A TypeScript framework for username sniping & CLI tools",
+  "main": "dist/sniper.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "sniper": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node dependencies/index.ts",
+    "start": "node dist/sniper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/72sevenzy2/sniper.js.git"
+  },
+  "keywords": [
+    "sniper",
+    "framework",
+    "typescript",
+    "cli tools"
+  ],
+  "author": "72",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/72sevenzy2/sniper.js/issues"
+  },
+  "homepage": "https://github.com/72sevenzy2/sniper.js#readme",
   "devDependencies": {
     "@types/node": "^24.6.2",
     "ts-node": "^10.9.2",
