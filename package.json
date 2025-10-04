@@ -31,7 +31,11 @@
   "homepage": "https://github.com/72sevenzy2/sniper.js#readme",
   "devDependencies": {
     "@types/node": "^24.6.2",
+    "@types/node-fetch": "^2.6.13",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "undici": "^7.16.0"
   }
 }

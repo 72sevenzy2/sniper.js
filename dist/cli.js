@@ -1,2 +1,82 @@
+#!/usr/bin/env node
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const sniper_1 = require("./sniper");
+const arg_1 = __importDefault(require("arg"));
+function parseArgs(argv) {
+    return (0, arg_1.default)({
+        "--help": Boolean,
+        "--api": String,
+        "--interval": Number,
+        "--timeout": Number,
+        "-a": "--api",
+        "-i": "--interval",
+        "-t": "--timeout"
+    }, { argv });
+}
+async function main() {
+    const args = parseArgs(process.argv.slice(2));
+    const cmd = args._[0];
+    const username = args._[1];
+    if (!cmd || args["--help"]) {
+        console.log(`
+Usage:
+  sniper check <username> [-a apiUrl]
+  sniper observe <username> [-a apiUrl] [-i intervalMs] [-t timeoutMs]
+
+Options:
+  -a, --api       Custom API base (e.g. http://localhost:8000/check)
+  -i, --interval  Poll interval in ms (default 2000)
+  -t, --timeout   Timeout in ms (0 = no timeout)
+`);
+        process.exit(0);
+    }
+    if (!username) {
+        console.error("please provide a username");
+        process.exit(1);
+    }
+    const api = args["--api"];
+    const interval = args["--interval"];
+    const timeout = args["--timeout"];
+    if (cmd === "check") {
+        try {
+            const result = await (0, sniper_1.Username_Availability)(username, api);
+            if (typeof result === "boolean") {
+                console.log(result ? `${username} is available`
+                    : `Unavailable`);
+            }
+            else if (result?.availability !== undefined) {
+                console.log(result.availability ? `${username} is available`
+                    : `Unavailable`);
+            }
+            else {
+                console.log(`Could not determine the status of ${username}`);
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+        process.exit(0);
+    }
+    else if (cmd === "observe") {
+        console.log(`Observing ${username}`);
+        try {
+            await (0, sniper_1.observe_username)(username, { api, intervalMs: interval, timeoutMs: timeout });
+        }
+        catch (error) {
+            console.log(`Fatal error: ${error}`);
+        }
+        process.exit(0);
+    }
+    else {
+        console.log("cmd not found");
+        process.exit(1);
+    }
+}
+main().catch((error) => {
+    console.log(`Fatal: ${error}`);
+    process.exit(1);
+});
