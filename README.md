@@ -6,7 +6,7 @@ This username sniper was designed for people with almost no coding experiece to 
 
 First run:
 
-npm install -g sniper-72
+npm install -g roblox-sniper.js
 
 to install the necessary packages/deps for the framework.
 
