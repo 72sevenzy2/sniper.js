@@ -1,4 +1,4 @@
-Hi! this was a pretty cool mini framework to make, whilst also being fun and educational.
+Hi! this was a pretty cool mini library to make, whilst also being fun and educational.
 This javascript is also written in typescript. Which is pretty ironic
 Usage:
 
@@ -6,7 +6,7 @@ This username sniper was designed for people with almost no coding experiece to 
 
 First run:
 
-npm install -g sniper-framework
+npm install -g roblox-sniper
 
 to install the necessary packages/deps for the framework.
 
