@@ -37,6 +37,12 @@ As so you can also run:
 
 npx sniper observe -i -t
 
+aswell as:
+
+npx sniper snipe start
+^ This is the cmd that will try to get atleast 1 4l username for you.
+
 And it should work as the same regardless if you include the npx or not.
 
 Really hope you find this framework somewhat useful.
+
