@@ -1,7 +1,7 @@
 {
-  "name": "sniper-framework",
-  "version": "1.0.0",
-  "description": "A TypeScript framework for username sniping & CLI tools",
+  "name": "roblox-sniper.js",
+  "version": "2.1.0",
+  "description": "A TypeScript mini library for username sniping & CLI tools",
   "main": "dist/sniper.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -19,9 +19,9 @@
   },
   "keywords": [
     "sniper",
-    "framework",
     "typescript",
-    "cli tools"
+    "cli tools",
+    "roblox"
   ],
   "author": "72",
   "license": "MIT",

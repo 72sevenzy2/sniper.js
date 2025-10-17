@@ -26,6 +26,7 @@ async function main() {
 Usage:
   sniper check <username> [-a apiUrl]
   sniper observe <username> [-a apiUrl] [-i intervalMs] [-t timeoutMs]
+  sniper snipe start
 
 Options:
   -a, --api       Custom API base (e.g. http://localhost:8000/check)
@@ -70,6 +71,16 @@ Options:
             console.log(`Fatal error: ${error}`);
         }
         process.exit(0);
+    }
+    else if (cmd === "snipe") {
+        console.log("successfully executed.");
+        try {
+            await (0, sniper_1.snipe_recent)();
+        }
+        catch (error) {
+            console.log("something went wrong");
+        }
+        process.exit(1);
     }
     else {
         console.log("cmd not found");

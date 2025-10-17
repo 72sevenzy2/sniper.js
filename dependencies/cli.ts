@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Username_Availability, observe_username } from "./sniper";
+import { Username_Availability, observe_username, snipe_recent } from "./sniper";
 import arg from "arg";
 
 function parseArgs(argv: string[]) {
@@ -28,6 +28,7 @@ async function main() {
 Usage:
   sniper check <username> [-a apiUrl]
   sniper observe <username> [-a apiUrl] [-i intervalMs] [-t timeoutMs]
+  sniper snipe
 
 Options:
   -a, --api       Custom API base (e.g. http://localhost:8000/check)
@@ -79,6 +80,14 @@ Options:
             console.log(`Fatal error: ${error}`);
         }
         process.exit(0);
+    }
+    else if (cmd === "snipe") {
+        console.log("successfully executed.");
+        try {
+            await snipe_recent();
+        } catch (error: any) {
+            console.log("something went wrong");
+        }
     }
     else {
         console.log("cmd not found");

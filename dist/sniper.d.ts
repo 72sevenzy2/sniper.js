@@ -17,3 +17,8 @@ export declare function observe_username(username: string, opts?: {
     raw?: any;
     error?: string;
 }>;
+export declare function snipe_recent(): Promise<{
+    availability: boolean;
+    raw?: any;
+    error?: string;
+} | null>;
