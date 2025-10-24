@@ -6,7 +6,7 @@ This username sniper was designed for people with almost no coding experiece to 
 
 First run:
 
-npm install -g roblox-sniper.js
+npm install -g roblox-sniper.js!
 
 to install the necessary packages/deps for the framework.
 
@@ -45,4 +45,3 @@ npx sniper snipe start
 And it should work as the same regardless if you include the npx or not.
 
 Really hope you find this framework somewhat useful.
-
