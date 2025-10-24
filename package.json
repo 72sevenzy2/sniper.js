@@ -1,5 +1,5 @@
 {
-  "name": "roblox-sniper",
+  "name": "roblox-sniper.js",
   "version": "2.2.0",
   "description":"A TypeScript mini library for username sniping & CLI tools",
   "main": "dist/sniper.js",
