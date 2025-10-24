@@ -1,6 +1,6 @@
 Hi! this was a pretty cool mini library to make, whilst also being fun and educational.
-This javascript is also written in typescript. Which is pretty ironic
-Usage:
+This is also written in typescript. Which is pretty ironic
+
 
 This username sniper was designed for people with almost no coding experiece to potentially build their own website About it, it can also be used for people who do know how to program and such. Alright for the usage of this.
 
@@ -47,4 +47,4 @@ npx sniper snipe5 start
 
 And it should work as the same regardless if you include the npx or not.
 
-Really hope you find this framework somewhat useful.
+Really hope you find this lib somewhat useful.
