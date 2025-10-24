@@ -14,7 +14,7 @@ async function getFetch() {
             const ud = await import("undici");
             return ud.fetch;
         } catch (error) {
-            throw new Error("No fetch available, please use node 18+ or install node-fetch/unidici");
+            throw new Error("no fetch available, please use node 18+ or install node-fetch/unidici");
         }
     }
 }
@@ -68,10 +68,10 @@ export async function check_username(username: string, customApi?: string) {
     }
 
     if (result.availability) {
-        console.log(`Available: ${username}`);
+        console.log(`vailable: ${username}`);
     }
     else {
-        console.log(`${username} - Taken`);
+        console.log(`${username} - taken`);
     }
     return result;
 }
@@ -82,14 +82,14 @@ export async function observe_username(username: string, opts?:
     const interval = opts?.intervalMs ?? 2000;
     const timeout = opts?.timeoutMs ?? 0;
 
-    info(`Observing: ${username} every ${interval}ms${api ? `using API ${api}` : ""}...`);
+    info(`cbserving: ${username} every ${interval}ms${api ? `using api ${api}` : ""}...`);
 
     const start = Date.now();
     // looping until the username becomes avail
     while (true) {
         const r = await Username_Availability(username, api);
         if (r.error) {
-            error(`Check error ${r.error}`);
+            error(`check error ${r.error}`);
         }
         else if (r.availability) {
             console.log(`${username} is available.`);
@@ -100,7 +100,7 @@ export async function observe_username(username: string, opts?:
         }
 
         if (timeout > 0 && Date.now() - start >= timeout) {
-            error(`Timeout reached (${timeout}ms). Stopped observing.`);
+            error(`timeout reached (${timeout}ms). stopped observing.`);
             return { availability: false, raw: null, error: "timeout" };
         }
 
@@ -108,11 +108,10 @@ export async function observe_username(username: string, opts?:
     }
 }
 
-export async function snipe_recent() {
+export async function snipe_recent_4() {
     const base = 100;
     const length = 4;
     const chars = "abcdefghijklmnopqrstuvwxyz";
-    let result = "";
 
     for (let j = 0; j < base; j++) {
         let username = "";
@@ -129,9 +128,36 @@ export async function snipe_recent() {
                 console.log(`${username} is taken`);
             }
         } catch (error: any) {
-            console.log(`Error checking ${username}`);
+            console.log(`error checking ${username}`);
         }
     }
     console.log("no available usernames found in this batch.");
     return null;
+}
+
+export async function snipe_recent_5() {
+    const chars = "abcdefghiklmnopqrstuvwxyz";
+    const base = 100;
+    const length = 5;
+
+    for (let j = 0; j < base; j++) {
+        let username = "";
+        for (let i = 0; i < length; i++) {
+            const index = Math.floor(Math.random() * chars.length);
+            username += chars[index];
+        }
+
+        try {
+            const result = await Username_Availability(username);
+            if (result.availability) {
+                console.log(`${username} is available`);
+                return result;
+            }
+            else {
+                console.log(`${username} is not available`);
+            }
+        } catch (error: any) {
+            console.log(`error checking ${username}`);
+        }
+    }
 }

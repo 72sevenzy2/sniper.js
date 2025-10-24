@@ -39,8 +39,11 @@ npx sniper observe -i -t
 
 aswell as:
 
-npx sniper snipe start
-^ This is the cmd that will try to get atleast 1 4l username for you.
+npx sniper snipe4 start
+^ this will try to snipe a 4 letter username.
+
+npx sniper snipe5 start
+^ this will try to snipe a 5 letter username.
 
 And it should work as the same regardless if you include the npx or not.
 

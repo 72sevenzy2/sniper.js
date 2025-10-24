@@ -17,8 +17,13 @@ export declare function observe_username(username: string, opts?: {
     raw?: any;
     error?: string;
 }>;
-export declare function snipe_recent(): Promise<{
+export declare function snipe_recent_4(): Promise<{
     availability: boolean;
     raw?: any;
     error?: string;
 } | null>;
+export declare function snipe_recent_5(): Promise<{
+    availability: boolean;
+    raw?: any;
+    error?: string;
+} | undefined>;

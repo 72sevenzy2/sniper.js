@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Username_Availability, observe_username, snipe_recent } from "./sniper";
+import { Username_Availability, observe_username, snipe_recent_4, snipe_recent_5 } from "./sniper";
 import arg from "arg";
 
 function parseArgs(argv: string[]) {
@@ -28,7 +28,8 @@ async function main() {
 Usage:
   sniper check <username> [-a apiUrl]
   sniper observe <username> [-a apiUrl] [-i intervalMs] [-t timeoutMs]
-  sniper snipe
+  sniper snipe4 start (this is to snipe 4 letter usernames. (batch of 100 users))
+  sniper snipe5 start (this is to snipe 5 letter usernames. (batch of 100 users))
 
 Options:
   -a, --api       Custom API base (e.g. http://localhost:8000/check)
@@ -81,10 +82,18 @@ Options:
         }
         process.exit(0);
     }
-    else if (cmd === "snipe") {
+    else if (cmd === "snipe4") {
         console.log("successfully executed.");
         try {
-            await snipe_recent();
+            await snipe_recent_4();
+        } catch (error: any) {
+            console.log("something went wrong");
+        }
+    }
+    else if (cmd === "snipe5") {
+        console.log("successfully executed");
+        try {
+            await snipe_recent_5();
         } catch (error: any) {
             console.log("something went wrong");
         }
