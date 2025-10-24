@@ -1,7 +1,7 @@
 {
   "name": "roblox-sniper",
-  "version": "2.1.0",
-  "description": "A TypeScript mini library for username sniping & CLI tools",
+  "version": "2.2.0",
+  "description":"A TypeScript mini library for username sniping & CLI tools",
   "main": "dist/sniper.js",
   "types": "dist/index.d.ts",
   "bin": {
