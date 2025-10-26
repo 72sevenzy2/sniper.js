@@ -40,10 +40,10 @@ npx sniper observe -i -t
 aswell as:
 
 npx sniper snipe4 start
-^ this will try to snipe a 4 letter username.
+^ this will try to snipe a 4 letter username (keep in mind it checks infinitely untill 1 shows available)
 
 npx sniper snipe5 start
-^ this will try to snipe a 5 letter username.
+^ this will try to snipe a 5 letter username (checks infinitely untill 1 shows available)
 
 And it should work as the same regardless if you include the npx or not.
 

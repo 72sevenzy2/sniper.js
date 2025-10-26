@@ -104,35 +104,34 @@ async function observe_username(username, opts) {
         await (0, utils_1.sleep)(interval);
     }
 }
+// going to be doing the same thing as the snipe_recent_5 function,
 async function snipe_recent_4() {
-    const base = 100;
-    const length = 4;
     const chars = "abcdefghijklmnopqrstuvwxyz";
-    for (let j = 0; j < base; j++) {
+    let count = 0; // for keeping track on how many times it has checked usernames
+    // ^ for possibly future updates
+    while (true) {
         let username = "";
-        for (let i = 0; i < length; i++) {
+        for (let j = 0; j < 4; j++) {
             const index = Math.floor(Math.random() * chars.length);
             username += chars[index];
         }
-        try {
-            const result = await Username_Availability(username);
-            if (result.availability) {
-                console.log(`${username} is available.`);
-                return result;
-            }
-            else {
-                console.log(`${username} is taken`);
-            }
+        const result = await Username_Availability(username);
+        // conditionals
+        if (result.availability) {
+            console.log(`${username} is available`);
+            break; // break out of the loop
         }
-        catch (error) {
-            console.log(`error checking ${username}`);
+        else {
+            console.log(`${username} is NOT available`);
+            count++;
         }
     }
-    console.log("no available usernames found in this batch.");
-    return null;
 }
 async function snipe_recent_5() {
     const chars = "abcdefghiklmnopqrstuvwxyz";
+    let count = 0; // for keeping track on checked usernames
+    // ^ for possible updates in the future
+    // (recently added) infinitely checks 5 letter usernames untill 1 shows available and breaks out of the loop
     while (true) {
         let username = "";
         for (let j = 0; j < 5; j++) {
@@ -148,6 +147,7 @@ async function snipe_recent_5() {
         }
         else {
             console.log(`${username} is NOT available`);
+            count++;
         }
     }
 }

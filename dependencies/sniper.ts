@@ -108,35 +108,37 @@ export async function observe_username(username: string, opts?:
     }
 }
 
-export async function snipe_recent_4() {
-    const base = 100;
-    const length = 4;
-    const chars = "abcdefghijklmnopqrstuvwxyz";
 
-    for (let j = 0; j < base; j++) {
-        let username = "";
-        for (let i = 0; i < length; i++) {
+// going to be doing the same thing as the snipe_recent_5 function,
+export async function snipe_recent_4() {
+    const chars = "abcdefghijklmnopqrstuvwxyz";
+    let count: number = 0; // for keeping track on how many times it has checked usernames
+    // ^ for possibly future updates
+
+    while (true) {
+        let username: string = "";
+        for (let j = 0; j < 4; j++) {
             const index = Math.floor(Math.random() * chars.length);
             username += chars[index];
         }
-        try {
-            const result = await Username_Availability(username);
-            if (result.availability) {
-                console.log(`${username} is available.`);
-                return result;
-            } else {
-                console.log(`${username} is taken`);
-            }
-        } catch (error: any) {
-            console.log(`error checking ${username}`);
+
+        const result = await Username_Availability(username);
+        // conditionals
+        if (result.availability) {
+            console.log(`${username} is available`);
+            break; // break out of the loop
+        }
+        else {
+            console.log(`${username} is NOT available`);
+            count++;
         }
     }
-    console.log("no available usernames found in this batch.");
-    return null;
 }
 
 export async function snipe_recent_5() {
     const chars = "abcdefghiklmnopqrstuvwxyz";
+    let count: number = 0; // for keeping track on checked usernames
+    // ^ for possible updates in the future
 
 
     // (recently added) infinitely checks 5 letter usernames untill 1 shows available and breaks out of the loop
@@ -156,6 +158,7 @@ export async function snipe_recent_5() {
         }
         else {
             console.log(`${username} is NOT available`);
+            count++;
         }
     }
 }
