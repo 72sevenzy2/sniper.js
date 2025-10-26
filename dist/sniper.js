@@ -133,26 +133,21 @@ async function snipe_recent_4() {
 }
 async function snipe_recent_5() {
     const chars = "abcdefghiklmnopqrstuvwxyz";
-    const base = 100;
-    const length = 5;
-    for (let j = 0; j < base; j++) {
+    while (true) {
         let username = "";
-        for (let i = 0; i < length; i++) {
-            const index = Math.floor(Math.random() * chars.length);
-            username += chars[index];
+        for (let j = 0; j < 5; j++) {
+            // random index for the char and assigning it to the username var
+            username += chars[Math.floor(Math.random() * chars.length)];
         }
-        try {
-            const result = await Username_Availability(username);
-            if (result.availability) {
-                console.log(`${username} is available`);
-                return result;
-            }
-            else {
-                console.log(`${username} is not available`);
-            }
+        const result = await Username_Availability(username);
+        // check if the username is available, if so then break out of the loop
+        if (result.availability) {
+            console.log(`${username} is available`);
+            // breaking out of the loop
+            break;
         }
-        catch (error) {
-            console.log(`error checking ${username}`);
+        else {
+            console.log(`${username} is NOT available`);
         }
     }
 }

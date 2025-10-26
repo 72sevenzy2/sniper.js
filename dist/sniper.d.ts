@@ -22,8 +22,4 @@ export declare function snipe_recent_4(): Promise<{
     raw?: any;
     error?: string;
 } | null>;
-export declare function snipe_recent_5(): Promise<{
-    availability: boolean;
-    raw?: any;
-    error?: string;
-} | undefined>;
+export declare function snipe_recent_5(): Promise<void>;
